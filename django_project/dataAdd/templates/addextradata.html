@@ -1,0 +1,23 @@
+
+
+
+{% extends "profilebase.html"%}
+{%block table%}
+<h1>
+
+    extra dataaaaaa
+</h1>
+<form method="POST">
+    <div>
+          {% csrf_token %}
+
+    {{ form.as_table }}
+    <button  class="btn btn-primary btn-lg btn-block" type="submit">
+        Add
+    </button>
+    </div>
+
+</form>
+
+{%endblock%}
+

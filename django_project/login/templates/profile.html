@@ -1,0 +1,93 @@
+{% extends "profilebase.html"%}
+{%block image%}
+{%load static %}
+{%if info.profile_pic%}
+<img src="{{ info.profile_pic.url }}" alt="Circle Image" class="img-raised rounded-circle img-fluid">
+{%else%}
+<img src="{%static "img_avatar.png" %}" alt="Circle Image" class="img-raised rounded-circle img-fluid">
+{%endif%}
+{%endblock%}
+
+
+{%block table%}
+
+ <tr>
+      <td>Name</td>
+      <td>{{info.f_name}} {{info.l_name}} {{info.profile_pic}}</td>
+
+ </tr>
+
+
+ <tr>
+      <td>Email</td>
+      <td>{{info.email}} </td>
+
+ </tr>
+<tr>
+    {%if request.session.id %}
+    <td>ID</td>
+   <td>{{ request.session.id }}</td>
+    {%endif%}
+</tr>
+
+</tr>
+    {% if info.gender == 'M'%}
+         <tr>
+      <td>GEnder</td>
+      <td>{{'Male'}} </td>
+
+        </tr>
+     {%endif%}
+ {% if info.gender == 'F'%}
+         <tr>
+      <td>GEnder</td>
+      <td>{{'Female'}} </td>
+
+        </tr>
+     {%endif%}
+
+
+
+<tr>
+     <td colspan="2">
+
+        <a  class="btn btn-primary btn-lg btn-block" href="/projectlist">list all projects</a>
+
+    </td>
+</tr>
+<tr>
+    <td colspan="2">
+
+        <a  class="btn btn-primary btn-lg btn-block" href="/donationlist">list all donation</a>
+        </td>
+</tr>
+
+<tr>
+     </td>
+        <td colspan="2">
+
+        <a  class="btn btn-primary btn-lg btn-block" href="/add/data">add extra data</a>
+
+    </td>
+</tr>
+
+    <tr>
+     <td colspan="2">
+
+        <a  class="btn btn-primary btn-lg btn-block" href="/delete/profile">delete my account </aclass>
+
+    </td>
+</tr>
+</table>
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  Launch demo modal
+</button>
+
+<!-- Modal -->
+
+
+
+
+{%endblock%}
+

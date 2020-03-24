@@ -1,0 +1,145 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+{%load static%}
+<link href="{% static "css/bootstrap.min.css" %} " rel="stylesheet" />
+    <link href="{% static "css/font-awesome.css" %}" rel="stylesheet" />
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+
+<style>
+.login-container{
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+.login-logo{
+    position: relative;
+    margin-left: -41.5%;
+}
+.login-logo img{
+    position: absolute;
+    width: 20%;
+    margin-top: 19%;
+    background: #282726;
+    border-radius: 4.5rem;
+    padding: 5%;
+}
+.login-form-1{
+    padding: 9%;
+    background:#282726;
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
+}
+.login-form-1 h3{
+    text-align: center;
+    margin-bottom:12%;
+    color:#fff;
+}
+.login-form-2{
+    padding: 9%;
+    background: #f05837;
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
+}
+.login-form-2 h3{
+    text-align: center;
+    margin-bottom:12%;
+    color: #fff;
+}
+.btnSubmit{
+    font-weight: 600;
+    width: 50%;
+    color: #282726;
+    background-color: #fff;
+    border: none;
+    border-radius: 1.5rem;
+    padding:2%;
+}
+.btnForgetPwd{
+    color: #fff;
+    font-weight: 600;
+    text-decoration: none;
+}
+.btnForgetPwd:hover{
+    text-decoration:none;
+    color:#fff;
+}
+
+
+</style>
+<body>
+
+
+<div class="container login-container">
+    <div class="row">
+        <div class="col-md-6 login-form-1">
+            <h3>Login</h3>
+        {%block login %}
+        {%endblock %}
+        </div>
+        <div class="col-md-6 login-form-2">
+            <div class="login-logo">
+                <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt=""/>
+            </div>
+            <h3>regester</h3>
+        {%block regester%}not found{%endblock%}
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  forget my pass word
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">forget my pass</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="/forget/my_pass" method="post">
+                        {% csrf_token %}
+
+            <p>we sorry to forget ur password to join us again so we help u to send password to u to  login us again</p>
+            <hr>
+           <h4> just write your email and we send apassword to u </h4>
+            <input name="email" placeholder="write email "/>
+
+      </div>
+      <div class="modal-footer">
+        <a type="button" class="btn btn-secondary" data-dismiss="modal">Close</a>
+        <button type="submit" class="btn btn-primary">know my password</button>
+          </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+                </div>
+
+        </div>
+    </div>
+</div>
+</body>
+
+      <script src="{% static "js/JQuery-3.3.1.min.js" %}"></script>
+    <script src="{% static "js/popper.js" %}"></script>
+    <script src=" {% static "js/bootstrap.js" %}"></script>
+</html>
+
+
+
+
+
+
+
+
+<!--  -->

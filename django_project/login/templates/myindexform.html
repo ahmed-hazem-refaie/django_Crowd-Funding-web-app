@@ -1,0 +1,107 @@
+{%extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{%block regester%}
+
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+  <strong>Hello !</strong>   <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+    {% endfor %}
+</ul>
+{% endif %}
+
+
+{% if form.errors %}
+    {% for field in form %}
+        {% for error in field.errors %}
+            <div class="alert alert-danger">
+                <strong>{{ error|escape }}dd</strong>
+            </div>
+        {% endfor %}
+    {% endfor %}
+    {% for error in form.non_field_errors %}
+        <div class="alert alert-danger">
+            <strong>{{ error|escape }}ff</strong>
+        </div>
+    {% endfor %}
+{% endif %}
+<!--                <div class="form-group">-->
+<!--                    <input required type="text" class="form-control" name="fullname" placeholder="Your full name  *" value="" />-->
+<!--                </div>-->
+<!--                <div class="form-group">-->
+<!--                    <input required type="text" class="form-control" name="email" placeholder="Your Email *" value="" />-->
+<!--                </div>-->
+<!--                <div class="form-group">-->
+<!--                    <input required type="text" class="form-control" name="address" placeholder="Your address *" value="" />-->
+<!--                </div>-->
+<!--                <div class="form-group">-->
+<!--                    <select name="country" id="">-->
+
+<!--                        <option >Egypt </option>-->
+<!--                        <option >Brazil </option>-->
+<!--                        <option >America </option>-->
+<!--                        <option >China </option>-->
+<!--                    </select>-->
+<!--                </div>-->
+
+<!--                <div class="form-group">-->
+<!--                    <input required type="date" name="date" class="form-control" placeholder="Your Password *" value="" />-->
+<!--                </div>-->
+
+<!--                <div class="form-group">-->
+<!--                    <input required type="password" name="password" class="form-control" placeholder="Your Password *" value="" />-->
+<!--                </div>-->
+<!--                <div class="form-group">-->
+<!--                    <input required  type="file" name="img"  value="profile img"  />-->
+<!--                </div>-->
+
+                <form method="post" action="#" enctype="multipart/form-data">
+                    <div class="form-group">
+                         {% csrf_token %}
+                                {{ form|crispy }}
+
+
+
+                    </div>
+
+                <div class="form-group">
+
+                    <input  type="submit" name="regester" class="btnSubmit" value="regester" />
+                </div>
+
+
+                </form>
+
+{%endblock%}
+
+
+    {%block login %}
+ <form action="/login/profile" method="POST">
+
+           {% csrf_token %}
+                <div class="form-group">
+                    <input required type="text" name="email" class="form-control" placeholder="Your Email *" value="" />
+                </div>
+                <div class="form-group">
+                    <input required type="password" name="password" class="form-control" placeholder="Your Password *" value="" />
+                </div>
+                <div class="form-group">
+                    <input  name="login" type="submit" class="btnSubmit" value="login" />
+                </div>
+                <div class="form-group">
+<a type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  forget my pass word
+</a>                </div>
+
+            </form>
+
+        {%endblock%}
+
+

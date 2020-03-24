@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="55e9fb29-dd81-48a0-94e5-c1fdb24356c5" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="1YxDAAsW6lidRuOnU7Y0oDFZnaa" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/django_project/home/static/home" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/django_project/home/static" />
+      <recent name="$PROJECT_DIR$/django_project/login/static" />
+    </key>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="55e9fb29-dd81-48a0-94e5-c1fdb24356c5" name="Default Changelist" comment="" />
+      <created>1583875206004</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1583875206004</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="508" y="203" key="FileChooserDialogImpl" timestamp="1583877165945">
+      <screen x="0" y="23" width="1440" height="834" />
+    </state>
+    <state x="508" y="203" key="FileChooserDialogImpl/0.23.1440.834@0.23.1440.834" timestamp="1583877165945" />
+    <state x="229" y="79" key="SettingsEditor" timestamp="1583877192010">
+      <screen x="0" y="23" width="1440" height="834" />
+    </state>
+    <state x="229" y="79" key="SettingsEditor/0.23.1440.834@0.23.1440.834" timestamp="1583877192010" />
+    <state x="390" y="269" key="com.intellij.ide.util.TipDialog" timestamp="1584737512229">
+      <screen x="0" y="23" width="1440" height="830" />
+    </state>
+    <state x="390" y="263" key="com.intellij.ide.util.TipDialog/0.23.1440.811@0.23.1440.811" timestamp="1584222674423" />
+    <state x="390" y="267" key="com.intellij.ide.util.TipDialog/0.23.1440.822@0.23.1440.822" timestamp="1584366180626" />
+    <state x="390" y="269" key="com.intellij.ide.util.TipDialog/0.23.1440.830@0.23.1440.830" timestamp="1584737512229" />
+    <state x="385" y="183" width="670" height="676" key="search.everywhere.popup" timestamp="1584811025333">
+      <screen x="0" y="23" width="1440" height="836" />
+    </state>
+    <state x="385" y="183" width="670" height="676" key="search.everywhere.popup/0.23.1440.836@0.23.1440.836" timestamp="1584811025333" />
+  </component>
+</project>

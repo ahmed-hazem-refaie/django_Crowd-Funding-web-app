@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>{% block title %} {% endblock %}</title>
+        {% load static %}
+        <link
+            href="{% static 'user_projects' %}/css/bootstrap.min.css"
+            rel="stylesheet"
+        />
+        <link
+            href="{% static 'user_projects' %}/css/font-awesome.css"
+            rel="stylesheet"
+        />
+        <link
+            rel="stylesheet"
+            href="{% static 'user_projects' %}/css/bootstrap-tagsinput.css"
+        />
+        <style>
+            body{
+  font-family: 'Raleway', sans-serif;
+  background: #E9ECE9;
+}
+.comments-main{
+  background: #FFF;
+}
+.comment time, .comment:hover time,.icon-rocknroll, .like-count {
+  -webkit-transition: .25s opacity linear;
+  transition: .25s opacity linear;
+}
+.comments-main ul li{
+  list-style: none;
+}
+.comments .comment {
+  padding: 5px 10px;
+  background: #00AF90;
+}
+.comments .comment:hover time{
+  opacity: 1;
+}
+.comments .user-img img {
+  width: 50px;
+  height: 50px;
+}
+.comments .comment h4 {
+  display: inline-block;
+  font-size: 16px;
+}
+.comments .comment h4 a {
+  color: #404040;
+  text-decoration: none;
+}
+.comments .comment .icon-rocknroll {
+  color: #545454;
+  font-size: .85rem;
+}
+.comments .comment .icon-rocknroll:hover {
+  opacity: .5;
+}
+.comments .comment time,.comments .comment .like-count,.comments .comment .icon-rocknroll {
+  font-size: .75rem;
+  opacity: 0;
+}
+.comments .comment time, .comments .comment .like-count {
+  font-weight: 300;
+}
+.comments .comment p {
+  font-size: 13px;
+}
+.comments .comment p .reply {
+  color: #BFBFA8;
+  cursor: pointer;
+}
+.comments .comment .active {
+  opacity: 1;
+}
+.icon-rocknroll {
+  background: none;
+  outline: none;
+  cursor: pointer;
+  margin: 0 .125rem 0 0;
+}
+.comments .comment:hover .icon-rocknroll,.comments .comment:hover .like-count {
+  opacity: 1;
+}
+.comment-box-main{
+  background: #CA1D5F;
+}
+@media (min-width: 320px) and (max-width: 480px){
+  .comments .comment h4 {
+    font-size: 12px;
+  }
+  .comments .comment p{
+    font-size: 11px;
+  }
+  .comment-box-main .send-btn button{
+    margin-left: 5px;
+  }
+}
+        </style>
+    </head>
+    <body>
+        <!-- As a link -->
+
+        {%include "navbar.html" %}
+
+
+        <div class="row text-center">
+            <div class="col">
+                            {%block slider%} {% endblock %}
+
+            </div>
+        </div>
+
+        <script src="{% static 'user_projects' %}/js/JQuery-3.3.1.min.js"></script>
+        <script src="{% static 'user_projects' %}/js/popper.js"></script>
+        <script src="{% static 'user_projects' %}/js/bootstrap.min.js"></script>
+        <script src="{% static 'user_projects' %}/js/bootstrap-tagsinput.js"></script>
+        <script >Vue.component('like', {
+	    template: "<div class='like-data float-right text-white'><button class='icon-rocknroll mr-1 p-0 border-0' v-class='active: liked' v-on='click: toggleLike'><i class='fa fa-thumbs-up text-white' aria-hidden='true'></i></button><span class='like-count' v-class='active: liked'>{{ likesCount }}</span></div>",
+	    data: function() {
+	        return {
+	            liked: false,
+	            likesCount: 0
+	        }
+	    },
+	    methods: {
+	        toggleLike: function() {
+	            this.liked = !this.liked;
+	            this.liked ? this.likesCount++ : this.likesCount--;
+	        }
+	    }
+	});
+	new Vue({
+	    el: '.comments-main',
+	});</script>
+    </body>
+</html>

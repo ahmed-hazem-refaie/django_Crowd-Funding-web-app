@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>catgory</title>
+</head>
+<body>
+<div> {% if messages %}
+        <ul class="messages">
+            {% for k in messages%}
+            <li style="color:red">{{k}}</li>
+            {% endfor %}
+        </ul>
+    {% endif%}
+</div>
+<div  class="row ">
+    {% if cat_id%}
+
+        {% for k in cat_id%}
+       <h1>projects under category <span style="color:red">{{k.category_name}}</span> are : </h1>
+            <h2> </h2>
+        {% endfor %}
+        {% for p in projectcat%}
+
+    <div style="background-color:black;color:white">
+        <h2>project name:</h2><a href="http://localhost:8000/projects/{{p.project_id}}"> <h4 style=" border-bottom:1px solid #ddd ;"> {{p.project_title}}--->press me</h4></a>
+       <h3>project detail:</h3> <h5>{{p.project_details}}</h5>
+        <h3>total target for the project:</h3><h5>{{p.total_target}}</h5>
+
+    </div>
+    <hr/>
+    {% endfor %}
+    {% endif %}
+
+</div>
+     </div>
+
+</body>
+</html>

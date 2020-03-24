@@ -1,0 +1,19 @@
+
+
+
+{% extends "profilebase.html"%}
+
+   {%block table%}
+
+<h1> welecome in all_donation list :))</h1>
+  {% for donation in all_donation %}
+<tr>
+    <td>
+        <a href="http://localhost:8000/projects/{{donation.project_id.project_id}}"> {{donation.project_id.project_title}}</a>
+    </td>
+    <td>
+      <h3>{{donation.donation_amount}}</h3>
+    </td>
+</tr>
+{% endfor %}
+{%endblock%}

@@ -1,0 +1,172 @@
+{%extends "user_projects/base.html"%}{% block title %}Add Project{% endblock %}
+{%block content %}
+
+<div class="container mt-3">
+    <div class="row">
+        <form
+            action="/categories/add"
+            method="post"
+            enctype="multipart/form-data"
+        >
+            {% csrf_token %}
+            <div class="form-group">
+                <label>name</label>
+                <input
+                    type="text"
+                    class="form-control"
+                    name="name"
+                    placeholder="Category Title"
+                    required
+                />
+            </div>
+
+            <div class="form-group">
+                <input
+                    type="submit"
+                    class="form-control btn btn-outline-light btn-dark"
+                    value="Add Category"
+                />
+        </form>
+        <form
+            action="/projects/save"
+            method="post"
+            enctype="multipart/form-data"
+        >
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="tags">Title</label>
+                <input
+                    type="text"
+                    class="form-control"
+                    name="project_title"
+                    id="inputTitle"
+                    placeholder="Project Title"
+                    required
+                />
+                <small id="titleError" class="form-text text-danger"></small>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="inputPassword4">Category</label>
+                    <select
+                        id="category"
+                        name="project_category"
+                        class="form-control"
+                        required
+                    >
+                        <option selected>Choose...</option>
+                        {% for cat in categories %}
+                        <option value="{{cat.category_id}}">{{cat.category_name}}</option>
+                        {% endfor %}
+                    </select>
+                    <small
+                        id="categoryError"
+                        class="form-text text-danger"
+                    ></small>
+                </div>
+
+                <div class="form-group col-md-6">
+                    <label for="totalTarget">Total Target</label>
+                    <input
+                        type="number"
+                        name="project_total_target"
+                        min="1"
+                        class="form-control"
+                        id="totalTarget"
+                        placeholder="EX: 25000 "
+                        required
+                    />
+                    <small
+                        id="targetError"
+                        class="form-text text-danger"
+                    ></small>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="startDate">Start Date</label>
+                    <input
+                        type="date"
+                        class="form-control"
+                        id="startDate"
+                        name="project_start_date"
+                        required
+                    />
+                    <small
+                        id="startError"
+                        class="form-text text-danger"
+                    ></small>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="endDate">End Date</label>
+                    <input
+                        type="date"
+                        class="form-control"
+                        id="endDate"
+                        name="project_end_date"
+                        required
+                    />
+                    <small id="endError" class="form-text text-danger"></small>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="tags">Tags</label>
+            </div>
+
+            <div class="form-group">
+                <input
+                    type="text"
+                    name="project_tags"
+                    class="form-control"
+                    data-role="tagsinput"
+                    id="tags"
+                    required
+                />
+                <small id="tagsError" class="form-text text-danger"></small>
+            </div>
+
+            <div class="form-group">
+                <!-- use dropzone plugin here in real project design -->
+                <label for="projectImages">Project Images</label>
+                <input
+                    type="file"
+                    name="project_images[]"
+                    class="form-control"
+                    id="projectImages"
+                    multiple
+                    required
+                />
+                <small id="imagesError" class="form-text text-danger"></small>
+            </div>
+
+            <div class="form-group">
+                <label for="projectDesc">Project Description</label>
+                <textarea
+                    cols="12"
+                    rows="6"
+                    name="project_description"
+                    class="form-control"
+                    id="projectDesc"
+                    required
+                ></textarea>
+                <small id="detailsError" class="form-text text-danger"></small>
+            </div>
+
+            <div class="form-group">
+                <input
+                    type="submit"
+                    id="submit"
+                    class="form-control btn btn-outline-light btn-dark"
+                    value="Add Project"
+                />
+                <small id="submitMessage" class="form-text text-danger">
+                    Fill All required fields to be able to submit</small
+                >
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

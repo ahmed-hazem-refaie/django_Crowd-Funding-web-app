@@ -1,0 +1,172 @@
+{% extends "user_projects/base.html" %}{% block title %} {{data.project_title }}
+{% endblock %} {%block content %}
+
+<div class="container mt-3">
+    <div class="row">
+        <h2>Project Details</h2>
+        <br />
+        <h3>Project Title: {{data.project_title}}</h3>
+        <br />
+        <h3>Project Details: {{data.project_details}}</h3>
+        <br />
+        <h3>Project Start: {{data.start_time}}</h3>
+        <br />
+        <h3>Project End: {{data.end_time}}</h3>
+        <br />
+        <h3>Project Target: {{data.total_target}}</h3>
+        <br />
+        <h3>Project Category: {{category.category_name}}</h3>
+        <br />
+        <h3>Project Tags:</h3>
+        <br />
+        <ul>
+            {% for tag in data.tags_set.all %}
+            <li>{{tag.tag_name}}</li>
+            {% endfor %}
+        </ul>
+        <br />
+
+        <h3>Project Images:</h3>
+        <br />
+        <ul>
+            {% load static %} {% for image in data.images_set.all %}
+            <li>
+                <img
+                    style="width: 50%; height:250px;"
+                    src="{{image.img.url}}"
+                />
+            </li>
+            {% endfor %}
+        </ul>
+        <br />
+
+        <h3>Project Comments:</h3>
+        <br />
+        <ul>
+            {% for comment in data.comment_set.all %}
+            <li>
+                {{comment.comment_content}}
+                <ul>
+                    {% for reply in comment.subcomment_set.all %}
+                    <li>{{reply.comment_content}}</li>
+                    {% endfor %}
+                </ul>
+                <form action="/comments/reply" method="post" class="m-5">
+                    {% csrf_token %}
+                    <input
+                        type="hidden"
+                        name="comment_id"
+                        value="{{comment.comment_id}}"
+                    />
+
+
+                    <input type="text" name="content" class="form-control" />
+                    <button type="submit">Reply</button>
+                </form>
+                <form action="/comment/report" method="post">
+                        {% csrf_token %}
+                        <input
+                            type="hidden"
+                            name="comment_id"
+                            value="{{comment.comment_id}}"
+                        />
+                    <button type="submit">Report Comment</button>
+            </form>
+            </li>
+
+            {% endfor %}
+        </ul>
+        <br />
+    </div>
+
+    <div class="row m-5">
+        <form action="/comments/add" method="post">
+            {% csrf_token %}
+            <label for="">Add Comment</label>
+            <input
+                type="hidden"
+                name="project_id"
+                value="{{data.project_id}}"
+            />
+
+            <input type="hidden" name="user_id" value="1" />
+
+            <input type="text" name="content" class="form-control" />
+            <button type="submit">Add Comment</button>
+        </form>
+    </div>
+
+    <div class="row m-5">
+        <form action="/donation/add" method="post">
+            {% csrf_token %}
+            <label for="">Donation for the project</label>
+            <input
+                type="hidden"
+                name="project_id"
+                value="{{data.project_id}}"
+            />
+
+            <input type="hidden" name="user_id" value="1" />
+
+            <input type="number" min="1" name="amount" class="form-control" />
+            <button type="submit">Send Donate</button>
+        </form>
+    </div>
+
+    <h3>Project All Donations: {{ total_donate.donation_amount__sum }} LE</h3>
+    <br />
+    <br />
+
+    <div class="row m-5">
+        <form action="/projects/rate" method="post">
+            {% csrf_token %}
+            <label for="">Rate this project</label>
+            <input
+                type="hidden"
+                name="project_id"
+                value="{{data.project_id}}"
+            />
+
+            <input type="hidden" name="user_id" value="1" />
+
+            <input
+                type="number"
+                min="0"
+                name="rate"
+                max="10"
+                class="form-control"
+            />
+            <button type="submit">Rate</button>
+        </form>
+    </div>
+
+    {% load mathfilters %}
+    <h3>
+        Project Rates:{{ rate_sum.rate__sum|div:rate_count.rate__count|mul:10}}
+        %
+    </h3>
+    <br />
+    <br />
+
+    {% if data.total_target|sub:total_donate.donation_amount__sum > data.total_target|div:4 %}
+
+    <form action="/projects/cancel" method="post">
+        {% csrf_token %}
+        <input type="hidden" name="project_id" value="{{data.project_id}}" />
+
+
+        <button type="submit">Cancel Project</button>
+    </form>
+
+    {% endif %}
+
+    <form action="/project/report" method="post">
+        {% csrf_token %}
+        <input type="hidden" name="project_id" value="{{data.project_id}}" />
+        <button type="submit">Report Project</button>
+    </form>
+
+
+
+</div>
+{% endblock %}

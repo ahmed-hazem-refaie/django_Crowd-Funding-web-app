@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>search</title>
+    <style>
+            .form-control{
+        width:400px;
+        display:inline-block;
+}
+.search-bar{
+width:45%;
+padding:10px;
+border-radius:1%;
+display:inline-block;
+margin:10px auto;
+background-color:#eee;
+}
+form{
+display:inline-block;
+}
+.display_projects{
+    width:80%;
+    margin:10px auto;
+    background-color:#eee;
+    border-radius:2%;
+    height:300px;
+    overflow:auto;
+    padding:10px;
+
+}
+    </style>
+</head>
+<body>
+
+
+<div class="container">
+    <div class="row">
+
+
+<div class="search-bar">
+<form action="search" method="POST">
+   {% csrf_token %}
+    <input type="text" class="form-control"name="title_search" id="title_search"placeholder="search by  title" />
+   <input type="submit" calss="btn btn-info" value="search by title"/>
+</form></div>
+<div class="search-bar">
+<form action="search" method="POST">
+   {% csrf_token %}
+    <input type="text" class="form-control"name="tag_search" id="tag_search"placeholder="search by tag" />
+   <input type="submit" calss="btn btn-info" value="search by tag"/>
+</form></div>
+</div>
+<div>
+    {% if messages %}
+        <ul class="messages">
+            {% for k in messages%}
+            <li style="color:red">{{k}}</li>
+            {% endfor %}
+        </ul>
+    {% endif%}
+</div>
+<div  class="row display_projects">
+    {% if stitle%}
+        {% for k in stitle%}
+
+    <a href="http://localhost:8000/projects/{{k.project_id}}">  <h1>{{k.project_title}}</h1></a>
+    <br>
+    <b>details</b>
+    <hr>
+            <h4>{{k.project_details}}</h4>
+<hr>
+        {% endfor %}
+    {% endif %}
+       {% if stag%}
+        {% for k in stag%}
+            <h1>{{k.tag_name}}</h1>
+    <a href="http://localhost:8000/projects/{{k.project_id.project_id}}"> <h4>{{k.project_id.project_title}}</h4></a>
+<hr>
+        {% endfor %}
+    {% endif %}
+</div>
+     </div>
+</body>
+</html>

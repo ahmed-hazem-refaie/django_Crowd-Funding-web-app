@@ -1,0 +1,39 @@
+{% extends "profilebase.html"%}
+
+   {%block table%}
+
+<h1> welecome in all_project list :))</h1>
+{% for project in all_project %}
+<tr>
+    <td colspan="2"><h1>Project</h1></td>
+
+</tr>
+<tr>
+    <td><h2>title</h2></td>
+
+     <td ><a href="http://localhost:8000/projects/{{project.project_id}}"><h3>  {{project.project_title}}</h3></a></td>
+</tr>
+<tr>
+    <td><h2>details</h2></td>
+    <td ><h3>{{project.project_details}}</h3></td>
+
+</tr>
+<tr>
+    <td><h2>target</h2></td>
+    <td ><h3>{{project.total_target}}</h3></td>
+
+</tr><tr>
+    <td><h2>start time</h2></td>
+    <td ><h3>{{project.start_time}}</h3></td>
+
+</tr><tr>
+    <td><h2>end time</h2></td>
+    <td ><h3>{{project.end_time}}</h3></td>
+
+</tr>
+
+
+
+
+{% endfor %}
+{%endblock%}

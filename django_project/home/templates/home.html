@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>home</title>
+    {% load static %}
+
+     <link href="{% static 'home/css/bootstrap.css' %}" rel="stylesheet"type="text/css" />
+    <link href="{% static 'home/css/font-awesome.css' %}" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="{% static 'home/css/style.css'%}"type="text/css">
+    <style>
+        body{
+            padding-top:10px;
+        }
+        .carousel-inner>.carousel-item>h3{
+            width:40%;
+            height:50px;
+        }
+        .carousel-indicators>li{
+            padding:10px;
+        }
+        .carousel-indicators > li.active{
+            background-color:red;
+        }
+        .container{
+            margin:20px auto;
+        }
+
+    </style>
+</head>
+<body>
+
+<div id="nav"></div>
+<!-- {% for  imgs in project_img_db %}-->
+<!--            <img src="{% static 'home/images'%}/{{imgs}}"width="100px" height="100px" />-->
+
+<!--        {% endfor %}-->
+    <div class="container">
+
+        <button  class="btn btn-secondary btn-lg btn-block" onclick="window.location.href='search'">searchhhhhh</button>
+        <div class="carousel bg-danger text-center m-auto" id="mycarousel" data-ride="carousel" data-interval="1000" >
+            <ul class="carousel-indicators">
+                <li data-slide-to="0" class="active" data-target="#mycarousel"></li>
+                <li data-slide-to="1" data-target="#mycarousel"></li>
+                <li data-slide-to="2" data-target="#mycarousel"></li>
+                <li data-slide-to="3" data-target="#mycarousel"></li>
+                <li data-slide-to="4" data-target="#mycarousel"></li>
+
+            </ul>
+
+<h1>heighst projects</h1>
+                     <div id="heighestRating">
+
+ <div class="carousel-inner">
+<!--     <h1 class="carousel-item active">active </h1>-->
+        <div class="carousel-item active">
+                                        <h1>top  5 projects</h1>
+
+            <br>
+            <br>    <br>
+            <br>    <br>
+            <br>
+        </div>
+                        {% for  high in highestProjects1 %}
+                             <div class="carousel-item ">
+                                <h1>project name-->{{high.1}}</h1>
+                                   <h1>project rate-->{{high.2}}</h1>
+                                   <h1>project total target -->{{high.3}}</h1>
+                                   <a href="/projects/{{high.0}}">project link-->{{high.1}}<a/>
+
+                                    <br>
+            <br>    <br>
+            <br>    <br>
+            <br>
+                             </div>
+{% endfor %}
+            </div><!-- End OF Carousel Inner-->
+        <a href="#" data-target="#mycarousel" class="carousel-control-prev" data-slide="prev"><span class="carousel-control-prev-icon"></span></a>
+            <a href="#" data-target="#mycarousel" class="carousel-control-next" data-slide="next"><span class="carousel-control-next-icon"></span></a>
+        </div><!-- End OF Carousel Control-->
+
+    </div> <!-- End Of Container-->
+
+
+ <script src="{% static 'home/js/JQuery-3.3.1.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'home/js/popper.js' %}"  type="text/javascript"></script>
+    <script src="{% static 'home/js/bootstrap.js' %}" type="text/javascript"></script>
+
+<div id="main" class="row">
+    <div id="latestProjects">
+<h2>latest projects</h2>
+        {% for  recent in recentProject %}
+            <h3>{{recent}}</h3>
+        {% endfor %}
+</div>
+
+     <div id="adminChoices">
+<h2>heighly recommended </h2>
+        {% for  choice in adminChoice %}
+            <h3>{{choice}}</h3>
+
+        {% endfor %}
+</div>
+   <div id="categories">
+<h2>our categories</h2>
+        <ul>
+
+            {% for catobj in categoryobj %}
+
+                <li><a href="category?cat_id={{catobj.category_id}}">{{catobj.category_name}}</a>
+
+                </li>
+            {% endfor %}
+        </ul>
+        </div>
+</div>
+<!-- <h1>slide test</h1>-->
+
+<!--        {% for  slide in splitarrayImage %}-->
+<!--             <img src="{% static 'home/images'%}/{{slide}}"width="100px" height="100px" />-->
+<!--        {% endfor %}-->
+<!--title-->
+<!--        {% for  title in splitarrayTitle %}-->
+<!--            <h1>{{title}}</h1>-->
+<!--        {% endfor %}-->
+<!--high-->
+<!--        {% for  rate in splitarrayHigh %}-->
+<!--                <h1>{{rate}}</h1>-->
+<!--        {% endfor %}-->
+
+
+</div>
+<script type="text/javascript">
+    document.getElementById("#id_q").value="{{query}}"
+</script>
+</body>
+</html>

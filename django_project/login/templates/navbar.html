@@ -1,0 +1,47 @@
+    <nav class="navbar navbar-color-on-scroll navbar-transparent    fixed-top  navbar-expand-lg "  color-on-scroll="100"  id="sectionsNav">
+
+
+  <a class="navbar-brand" href=""></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="/home">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/projects/add">projects_add</a>
+      </li>
+       <li class="nav-item">
+        <a class="nav-link" href="/login/profile">My_profile</a>
+      </li>
+          </li>
+       <li class="nav-item">
+        <a class="nav-link" href="/logout/">LOG OUT</a>
+      </li>
+
+
+    </ul>
+ <form action="/home/search" method="POST">
+   {% csrf_token %}
+    <input style="background:yellow" type="text" class="form-control"name="title_search" id="title_search"placeholder="search by  title" />
+   <input style="background:yellow"  type="submit" calss="btn btn-info" value="search"/>
+</form>
+  </div>
+</nav>
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+</body>
+</html>
