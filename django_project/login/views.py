@@ -90,16 +90,18 @@ def activate (request,activeno):
     # mm.date() == datetime.today().date())
 
 
-def update (request,id):
-    user_obj = User.objects.filter(id=id)
-    if user_obj:
-        user_obj = user_obj[0]
-        form = rejesterform(request.POST  or None  ,request.FILES or None,instance=user_obj)
-        if request.POST and form.is_valid():
-            form.save()
-            return HttpResponse('done')
+def update (request):
+    if 'id' in request.session :
 
-    return render(request, 'myindexform.html', {'form': form})
+        user_obj = User.objects.filter(id=request.session['id'])
+        if user_obj:
+            user_obj = user_obj[0]
+            form = rejesterform(request.POST  or None  ,request.FILES or None,instance=user_obj)
+            if request.POST and form.is_valid():
+                form.save()
+                return HttpResponse('done')
+
+    return render(request, 'myindexform.html', {'form': form ,'edit':True,'password':user_obj.password})
 
 def login (request):
     if request.method=='POST':

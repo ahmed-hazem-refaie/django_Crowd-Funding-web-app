@@ -33,7 +33,7 @@ urlpatterns = [
     path('logout/',logout ),
     path('activate/<activeno>/',activate),
     path('login/profile',login),
-    path('update/<int:id>/',update),
+    path('update/',update),
     path('add/data',add_data),
     path('delete/profile',delete_user),
     path('forget/my_pass',forget_my_password),

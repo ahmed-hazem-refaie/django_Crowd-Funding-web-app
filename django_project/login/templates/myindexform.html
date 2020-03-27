@@ -67,7 +67,15 @@
                          {% csrf_token %}
                                 {{ form|crispy }}
 
-
+                {{edit}}
+                        {%if  edit %}
+<h1>ddddd</h1>
+                        <script>
+                        document.querySelector('#id_email').disabled=true
+                        document.querySelector('#id_password').value={{password}}
+                        document.querySelector('.my_login').hidden=true
+                        </script>
+                        {%endif%}
 
                     </div>
 
